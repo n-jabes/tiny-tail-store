@@ -20,6 +20,8 @@ export default {
         text: 'hsl(var(--text))',
         input: 'hsl(var(--input))',
         mainBg: 'var(--main-bg)',
+        contentBg: 'var(--content-bg)',
+        inputBorder: 'var(--input-border)',
 		sidebarMenu: {
 			text: 'hsl(var(--sidebar-selected-menu-text))',
 		},

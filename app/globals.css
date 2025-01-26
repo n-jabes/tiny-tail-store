@@ -93,6 +93,8 @@ body {
     --sidebar-selected-menu-text: 234 31% 81%;
     --sidebar-blur: linear-gradient(90deg, #0a04a2cc 17.68%, #96f0ffcc 93.47%);
     --main-bg: #0F1629;
+    --content-bg: #0B0B17;
+    --title: #C1C4DE;
   }
 }
 

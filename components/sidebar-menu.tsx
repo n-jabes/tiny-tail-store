@@ -1,7 +1,6 @@
 'use client';
 
 import { ChevronRight, type LucideIcon } from 'lucide-react';
-
 import { Collapsible } from '@/components/ui/collapsible';
 import {
   SidebarGroup,
@@ -10,6 +9,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 export function SideBarMenu({
@@ -46,10 +46,12 @@ export function SideBarMenu({
                   : ''
               }`}
             >
-              <SidebarMenuButton tooltip={item.title}>
-                {item.icon && <item.icon />}
-                <span>{item.title}</span>
-              </SidebarMenuButton>
+              <Link href={item.url} className="w-full">
+                <SidebarMenuButton tooltip={item.title}>
+                  {item.icon && <item.icon />}
+                  <span>{item.title}</span>
+                </SidebarMenuButton>
+              </Link>
             </SidebarMenuItem>
           </Collapsible>
         ))}
