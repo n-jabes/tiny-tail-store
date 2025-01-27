@@ -17,6 +17,8 @@ import {
   SidebarMenuSubButton,
   SidebarMenuSubItem,
 } from '@/components/ui/sidebar';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function SidebarMemberServices({
   services,
@@ -31,6 +33,8 @@ export function SidebarMemberServices({
     }[];
   }[];
 }) {
+  const currentPath = usePathname();
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>MEMBER SERVICES</SidebarGroupLabel>
@@ -42,23 +46,35 @@ export function SidebarMemberServices({
             defaultOpen={item.isActive}
             className="group/collapsible"
           >
-            <SidebarMenuItem>
+            <SidebarMenuItem
+              className={`${
+                currentPath === item.url
+                  ? 'rounded-sm font-semibold bg-sidebarMenu-bg text-sidebarMenu-text'
+                  : ''
+              }`}
+            >
               <CollapsibleTrigger asChild>
-                <SidebarMenuButton tooltip={item.title}>
-                  <span>{item.title}</span>
-                  {(item?.items?.length !<= 0 || item.items !== undefined) && <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />}
-                  
-                </SidebarMenuButton>
+                <Link href={item.url} className="w-full">
+                  <SidebarMenuButton tooltip={item.title}>
+                    <span>{item.title}</span>
+                    {(item?.items?.length! <= 0 ||
+                      item.items !== undefined) && (
+                      <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                    )}
+                  </SidebarMenuButton>
+                </Link>
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <SidebarMenuSub>
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
-                        <a href={subItem.url}>
-                          <span>{subItem.title}</span>
-                        </a>
-                      </SidebarMenuSubButton>
+                      <Link href={subItem.url} className="w-full">
+                        <SidebarMenuSubButton asChild>
+                          <a href={subItem.url}>
+                            <span>{subItem.title}</span>
+                          </a>
+                        </SidebarMenuSubButton>
+                      </Link>
                     </SidebarMenuSubItem>
                   ))}
                 </SidebarMenuSub>

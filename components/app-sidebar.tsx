@@ -74,7 +74,7 @@ const data = {
   memberServices: [
     {
       title: 'Affiliate login',
-      url: '#',
+      url: '/affiliate',
       isActive: false,
       items: [
         {
@@ -110,7 +110,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
 
 
   return (
-    <Sidebar collapsible="icon" {...props} className="overflow-clip">
+    <Sidebar collapsible="icon" {...props} className="overflow-clip h-full bg-sidebar">
       <SidebarHeader>
         <h1 className="font-semibold text-lg">LOGO</h1>
       </SidebarHeader>

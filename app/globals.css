@@ -52,6 +52,16 @@ body {
     --content-bg: #F8F9FA;
     --popup-bg: #F8F9FA;
     --title: #353949;
+    --card-bg: #BDC3FF26;
+    --dropdown-bg: #e8edf3;
+    --inner-card-bg: #FDFDFF;
+    --card-hover: #465BEDE5;
+    --card-numbers: #465BED;
+    --card-title: #353949;
+    --card-icon: #465BEDE5;
+    --card-icon-bg: #E2E5FF;
+    --gray-table-row: #BDC3FF26;
+    --white-table-row: #FDFDFF;
 
   }
   .dark {
@@ -87,6 +97,8 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
+   
+
 
     /* my custom colors */
 
@@ -100,6 +112,17 @@ body {
     --content-bg: #0B0B17;
     --popup-bg: #0F1629;
     --title: #C1C4DE;
+    --card-bg: #0F1629;
+    --dropdown-bg: #3D619D33;
+    --inner-card-bg: #3D619D4D;
+    --card-hover: #465BEDE5;
+    --card-numbers: #FFFFFF;
+    --card-title: #C1C4DE;
+    --card-icon: #FFF;
+    --card-icon-bg: #3D619D4D;
+    --table-row: #0F1629;
+    --gray-table-row: #3D619D0D;
+    --white-table-row: #0F1629;
   }
 }
 
