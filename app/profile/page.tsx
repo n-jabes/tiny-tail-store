@@ -2,11 +2,22 @@
 
 import Image from 'next/image';
 import { Trash2, Upload, Eye, EyeOff, Edit } from 'lucide-react';
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 
 export default function Page() {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
+
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevents page reload
+    setIsPopupVisible(true); // Show the popup
+  };
+
+  const closePopup = () => {
+    setIsPopupVisible(false); // Close the popup
+  };
 
   const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
 
@@ -18,7 +29,7 @@ export default function Page() {
       <h1 className="text-xl font-semibold text-text mb-6">My Profile</h1>
 
       {/* Form */}
-      <form>
+      <form onSubmit={(e) => handleFormSubmit(e)}>
         {/* Profile Image Section */}
         <div className="flex items-start gap-2 mb-6 border-b border-gray-300 pb-6">
           {/* Profile Image */}
@@ -218,6 +229,57 @@ export default function Page() {
           </button>
         </div>
       </form>
+      {isPopupVisible && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md">
+          <div className="w-full max-w-md bg-popupBg rounded-2xl shadow-xl p-6 sm:p-8">
+            <div className="flex flex-col items-center">
+              {/* Icon */}
+              <div className="bg-red-100 text-red-500 p-4 rounded-full mb-4">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-8 w-8"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="12" />
+                  <line x1="12" y1="16" x2="12.01" y2="16" />
+                </svg>
+              </div>
+
+              {/* Message */}
+              <h2 className="text-lg font-semibold text-title text-center">
+                The current password is incorrect.
+              </h2>
+              <p className="mt-2 text-sm text-text text-center">
+                The new password does not meet security requirements. Make sure
+                the password contains at least 8 characters, including uppercase
+                and lowercase letters, numbers, and special characters.
+              </p>
+
+              {/* Buttons */}
+              <div className="mt-6 flex gap-4 w-full">
+                <button
+                  className="text-sm flex-1 py-2 bg-gray-200 text-gray-700 rounded-md hover:bg-gray-300"
+                  onClick={closePopup}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="text-sm flex-1 py-2 bg-button-bg text-white rounded-md hover:bg-blue-700"
+                  onClick={closePopup}
+                >
+                  Edit password
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

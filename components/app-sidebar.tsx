@@ -1,6 +1,7 @@
 'use client';
 
 import * as React from 'react';
+
 import {
   LayoutDashboard,
   User,
@@ -106,6 +107,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   React.useEffect(() => {
     setTheme('light');
   }, []);
+
 
   return (
     <Sidebar collapsible="icon" {...props} className="overflow-clip">

@@ -49,6 +49,10 @@ body {
     --sidebar-selected-menu-text: 232 82% 60%;
     --sidebar-blur: linear-gradient(90deg, #F0F2F4 17.68%, #F0F2F4 93.47%);
     --main-bg: #F8F9FA;
+    --content-bg: #F8F9FA;
+    --popup-bg: #F8F9FA;
+    --title: #353949;
+
   }
   .dark {
     --background: 20 14.3% 4.1%;
@@ -94,6 +98,7 @@ body {
     --sidebar-blur: linear-gradient(90deg, #0a04a2cc 17.68%, #96f0ffcc 93.47%);
     --main-bg: #0F1629;
     --content-bg: #0B0B17;
+    --popup-bg: #0F1629;
     --title: #C1C4DE;
   }
 }

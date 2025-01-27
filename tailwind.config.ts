@@ -21,6 +21,8 @@ export default {
         input: 'hsl(var(--input))',
         mainBg: 'var(--main-bg)',
         contentBg: 'var(--content-bg)',
+        popupBg: 'var(--popup-bg)',
+        title: 'var(--title)',
         inputBorder: 'var(--input-border)',
 		sidebarMenu: {
 			text: 'hsl(var(--sidebar-selected-menu-text))',
