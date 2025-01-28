@@ -27,7 +27,6 @@ import { SideBarHelpCenter } from './sidebar-helpCenter';
 import { SidebarMemberServices } from './sidebar-memberServices';
 import { Logout } from './logout-btn';
 import { useTheme } from 'next-themes';
-import { usePathname } from 'next/navigation';
 
 // This is sample data.
 const data = {
@@ -104,9 +103,11 @@ const data = {
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { theme, setTheme } = useTheme();
+
+  
   React.useEffect(() => {
     setTheme('light');
-  }, []);
+  }, [setTheme]);
 
 
   return (
