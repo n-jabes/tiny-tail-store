@@ -1,6 +1,6 @@
 'use client';
 
-import { ChevronRight} from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 import {
   Collapsible,
@@ -57,8 +57,7 @@ export function SidebarMemberServices({
                 <Link href={item.url} className="w-full">
                   <SidebarMenuButton tooltip={item.title}>
                     <span>{item.title}</span>
-                    {(item?.items?.length! <= 0 ||
-                      item.items !== undefined) && (
+                    {item?.items && item.items.length > 0 && (
                       <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                     )}
                   </SidebarMenuButton>
