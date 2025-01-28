@@ -13,6 +13,7 @@ export default {
 		  'button-bg': 'var(--button-bg)',
 		  'sidebarMenu-bg': 'var(--sidebar-selected-menu-bg)',
 		  'siderbar-blur': 'var(--sidebar-blur)',
+      'subscription-image': 'var(--subscription-image)',
 		},
       colors: {
         background: 'hsl(var(--background))',

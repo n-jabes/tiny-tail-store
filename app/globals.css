@@ -62,6 +62,7 @@ body {
     --card-icon-bg: #E2E5FF;
     --gray-table-row: #BDC3FF26;
     --white-table-row: #FDFDFF;
+    --subscription-image: url('/subscription.png');
 
   }
   .dark {
@@ -123,6 +124,7 @@ body {
     --table-row: #0F1629;
     --gray-table-row: #3D619D0D;
     --white-table-row: #0F1629;
+    --subscription-image: url('/white_subscription.png');
   }
 }
 

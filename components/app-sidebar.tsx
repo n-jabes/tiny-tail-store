@@ -45,7 +45,7 @@ const data = {
     },
     {
       title: 'Subscriptions',
-      url: '#',
+      url: '/subscriptions',
       icon: ReceiptText,
     },
     {
