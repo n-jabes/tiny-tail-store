@@ -57,6 +57,7 @@ export function SidebarMemberServices({
                 <Link href={item.url} className="w-full">
                   <SidebarMenuButton tooltip={item.title}>
                     <span>{item.title}</span>
+                    {/* check if the items are not empty */}
                     {item?.items && item.items.length > 0 && (
                       <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
                     )}
