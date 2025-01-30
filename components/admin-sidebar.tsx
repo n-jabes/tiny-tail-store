@@ -3,19 +3,6 @@
 import * as React from 'react';
 
 import {
-  LayoutDashboard,
-  User,
-  ReceiptText,
-  Network,
-  CreditCard,
-  Bell,
-  MessageCircleQuestion,
-  Search,
-  SunMedium,
-  Moon,
-} from 'lucide-react';
-
-import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
@@ -29,79 +16,111 @@ import { Logout } from './logout-btn';
 import { useTheme } from 'next-themes';
 
 // This is sample data.
+import {
+  LayoutDashboard,
+  Users,
+  User,
+  CreditCard,
+  FileText,
+  ClipboardList,
+  LogIn,
+  ShoppingCart,
+  Gift,
+  Lock,
+  History,
+  Bell,
+  Puzzle,
+  Settings,
+  Search,
+  SunMedium,
+  Moon,
+  MoveLeft,Mail, Wallet, ShieldHalf,
+} from 'lucide-react';
+import { AdminSidebarMenu } from './admin-sidebar-menu';
+import Link from 'next/link';
+
 const data = {
+  membership: [
+    {
+      title: 'Utlimate Membership (Pro)',
+      url: '/pro',
+      isActive: true,
+      icon: ShieldHalf,
+    },
+  ],
   menu: [
     {
       title: 'Dashboard',
-      url: '/pro',
+      url: '/dashboard',
       isActive: true,
       icon: LayoutDashboard,
     },
     {
-      title: 'Profile details',
-      url: '/profile',
+      title: 'Members',
+      url: '#',
       icon: User,
     },
     {
-      title: 'Subscriptions',
-      url: '/subscriptions',
-      icon: ReceiptText,
-    },
-    {
-      title: 'Social connection',
+      title: 'Memberships',
       url: '#',
-      icon: Network,
+      icon: Users,
     },
-  ],
-  help: [
     {
-      title: 'Payment',
+      title: 'Payment Gateways',
       url: '#',
       icon: CreditCard,
     },
     {
-      title: 'Notification',
+      title: 'Showcases',
       url: '#',
-      icon: Bell,
-    },
-    {
-      title: 'Help',
-      url: '#',
-      icon: MessageCircleQuestion,
-    },
-  ],
-  memberServices: [
-    {
-      title: 'Affiliate login',
-      url: '/affiliate',
-      isActive: false,
+      icon: ClipboardList,
       items: [
+        { title: 'Registration Form', url: '#' },
+        { title: 'Login Form', url: '#' },
+        { title: 'Subscriptions Plan', url: '#' },
+        { title: 'Checkout Page', url: '#' },
         {
-          title: 'Affiliates',
+          title: 'Member Portal',
           url: '#',
         },
       ],
     },
     {
-      title: 'Member login',
+      title: 'Coupons',
       url: '#',
+      icon: Gift,
     },
     {
-      title: 'Member logout',
+      title: 'Content Access Rules',
       url: '#',
+      icon: Lock,
     },
     {
-      title: 'Member TOS page',
+      title: 'Payment History',
       url: '#',
+      icon: Wallet,
     },
     {
-      title: 'Thank you page',
+      title: 'Email Notifications',
       url: '#',
+      icon: Mail,
+    },
+    {
+      title: 'Extensions',
+      url: '#',
+      icon: Puzzle,
+    },
+    {
+      title: 'General Settings',
+      url: '#',
+      icon: Settings,
     },
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AdminSidebar({
+  ...props
+}: React.ComponentProps<typeof Sidebar>) {
   const { theme, setTheme } = useTheme();
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -109,11 +128,14 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     setTheme('light');
   }, []);
 
-
   return (
-    <Sidebar collapsible="icon" {...props} className="overflow-clip h-full bg-sidebar">
+    <Sidebar
+      collapsible="icon"
+      {...props}
+      className="overflow-clip h-full bg-sidebar"
+    >
       <SidebarHeader>
-        <h1 className="font-semibold text-lg">LOGO</h1>
+        <h1 className="font-semibold text-lg">ADMIN</h1>
       </SidebarHeader>
       <SidebarContent>
         {/* Changing themes */}
@@ -139,17 +161,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </button>
         </div>
         {/* search input */}
-        <div className="py-1 px-4 rounded-full  w-[90%] m-auto bg-input flex items-center gap-[1rem] text-text">
-          <Search className="w-4 h-4" />
-          <input
-            type="text"
-            className="font-medium bg-transparent outline-none text-sm"
-            placeholder="Search"
-          />
+        <div className="px-4 w-[90%] ">
+          <Link
+            href="/"
+            className="w-max py-1 px-4 rounded-sm bg-input flex items-center gap-[1rem] text-text"
+          >
+            <MoveLeft className="w-4 h-4" />
+            <span className="text-title font-semibold text-sm">Back</span>
+          </Link>
         </div>
-        <SideBarMenu menu={data.menu} />
-        <SideBarHelpCenter help={data.help} />
-        <SidebarMemberServices services={data.memberServices} />
+        <AdminSidebarMenu menu={data.membership} />
+        <AdminSidebarMenu menu={data.menu} />
       </SidebarContent>
       <div className="absolute bottom-[-0.8rem] right-[-12rem] z-[-1] transform -translate-x-1/2 w-64 h-48 bg-siderbar-blur blur-3xl rounded-full"></div>
 
