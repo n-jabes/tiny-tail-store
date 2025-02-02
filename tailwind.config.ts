@@ -11,6 +11,7 @@ export default {
     extend: {
 		backgroundImage: {
 		  'button-bg': 'var(--button-bg)',
+		  'navBorder': 'var(--nav-border)',
 		  'sidebarMenu-bg': 'var(--sidebar-selected-menu-bg)',
 		  'siderbar-blur': 'var(--sidebar-blur)',
       'subscription-image': 'var(--subscription-image)',

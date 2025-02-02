@@ -45,6 +45,7 @@ body {
     --input: 210 17% 98%;
     --text: 240 5.3% 26.1%;
     --button-bg: linear-gradient(87.21deg, #455ced 14.45%, #455ced 95.19%);
+    --nav-border: linear-gradient(87.21deg, #455ced 14.45%, #455ced 95.19%);
     --sidebar-selected-menu-bg:linear-gradient(87.21deg, #fff 14.45%, #fff 95.19%) ;
     --sidebar-selected-menu-text: 232 82% 60%;
     --sidebar-blur: linear-gradient(90deg, #F0F2F4 17.68%, #F0F2F4 93.47%);
@@ -106,6 +107,7 @@ body {
     --input: 224 46% 11%;
     --text: 234 31% 81%;
     --button-bg: linear-gradient(87.21deg, #4D46E4 14.45%, #7F79F5 95.19%);
+    --nav-border: linear-gradient(87.21deg, #4D46E4 14.45%, #7F79F5 95.19%);
     --sidebar-selected-menu-bg: linear-gradient(87.21deg, #4D46E4 14.45%, #7F79F5 95.19%);
     --sidebar-selected-menu-text: 234 31% 81%;
     --sidebar-blur: linear-gradient(90deg, #0a04a2cc 17.68%, #96f0ffcc 93.47%);
