@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  ArrowUpDown,
+  SlidersHorizontal,
   Download,
   Search,
   UserPlus,
@@ -15,6 +15,7 @@ import * as XLSX from 'xlsx';
 export default function Home() {
   const [selectedNavItem, setSelectedNavItem] = useState('Members');
   const [popupVisible, setPopupVisible] = useState(false);
+  const [filterVisible, setFilterVisible] = useState(false);
   const [isExporting, setIsExporting] = useState(false); // State for progress
   const [progress, setProgress] = useState(0); // State for progress percentage
 
@@ -295,9 +296,57 @@ export default function Home() {
               {/* filters */}
               <div className="flex gap-4 items-center">
                 <div className="flex gap-2 items-center">
-                  {/* <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md">
-                    <ArrowUpDown className=" w-4 h-4" />
-                  </div> */}
+                  <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md relative">
+                    <SlidersHorizontal
+                      className=" w-4 h-4"
+                      onClick={() => setFilterVisible(!filterVisible)}
+                    />
+                    {filterVisible && (
+                      <div className="w-[400px] bg-popupBg text-text flex flex-col absolute z-10 top-[4rem] px-4 py-2 rounded-md right-[-8rem] shadow-lg">
+                        <div className="flex items-start justify-between">
+                          <h2 className="text-sm text-title font-semibold mb-2">
+                            Filters
+                          </h2>
+                          <span
+                            className="text-text font-semibold cursor-pointer"
+                            onClick={() => setFilterVisible(false)}
+                          >
+                            x
+                          </span>
+                        </div>
+                        {/* Dropdowns */}
+                        <div className="flex gap-2 mb-2 items-start justify-between">
+                          <select className="w-3/10 p-2 text-sm bg-inputBg rounded-md">
+                            <option>Member Role</option>
+                            <option>Admin</option>
+                            <option>User</option>
+                          </select>
+                          <select className="w-3/10 p-2 text-sm bg-inputBg rounded-md">
+                            <option>Email Status</option>
+                            <option>Verified</option>
+                            <option>Unverified</option>
+                          </select>
+                          <select className="w-3/10 p-2 text-sm bg-inputBg rounded-md">
+                            <option>Date Joined</option>
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                          </select>
+                        </div>
+                        {/* Buttons */}
+                        <div className="w-max gap-4 flex justify-between">
+                          <button className="py-2 px-4 bg-button-bg text-white text-sm rounded-md hover:bg-blue-700">
+                            Apply
+                          </button>
+                          <button
+                            className="py-[0.4rem] px-[0.4rem] text-sm border-[1px] rounded-md border-text text-gray-500 hover:text-gray-700"
+                            onClick={() => setFilterVisible(false)}
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                   <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md relative">
                     <Download className="w-4 h-4" onClick={handleExport} />
                     {isExporting ? (
@@ -342,18 +391,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
-            {/* Show progress bar while exporting */}
-            {isExporting && (
-              <div className="mt-4 w-full bg-cardBg rounded-full">
-                <div
-                  className="bg-bg-content0 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
-                  style={{ width: `${progress}%` }}
-                >
-                  {progress}%
-                </div>
-              </div>
-            )}
 
             {/* Table */}
             <div className="overflow-x-auto bg-cardBg rounded-md mt-4 lg:w-[71vw]">
