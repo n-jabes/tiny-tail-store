@@ -1,12 +1,22 @@
 'use client';
 
-import { ArrowUpDown, Download, Search, UserPlus } from 'lucide-react';
+import {
+  ArrowUpDown,
+  Download,
+  Search,
+  UserPlus,
+  FileInput,
+} from 'lucide-react';
 import React, { useState } from 'react';
 import DataTable from './data-table';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
 
 export default function Home() {
   const [selectedNavItem, setSelectedNavItem] = useState('Members');
   const [popupVisible, setPopupVisible] = useState(false);
+  const [isExporting, setIsExporting] = useState(false); // State for progress
+  const [progress, setProgress] = useState(0); // State for progress percentage
 
   const navbarItems = [
     {
@@ -56,8 +66,98 @@ export default function Home() {
     },
   ];
 
+  const rows = [
+    {
+      id: 1,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Confirm',
+      joined: 'July 24, 2024',
+    },
+    {
+      id: 2,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Pending',
+      joined: 'July 24, 2024',
+    },
+    {
+      id: 3,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Rejected',
+      joined: 'July 24, 2024',
+    },
+    {
+      id: 4,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Confirm',
+      joined: 'July 24, 2024',
+    },
+    {
+      id: 5,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Pending',
+      joined: 'July 24, 2024',
+    },
+    {
+      id: 6,
+      name: 'John Smith',
+      email: 'test@gmail.com',
+      plans: '-',
+      spend: '0.00 USD',
+      role: 'Editor',
+      status: 'Rejected',
+      joined: 'July 24, 2024',
+    },
+  ];
+
   const handlePopupClose = () => {
     setPopupVisible(false);
+  };
+
+  const handleExport = () => {
+    setIsExporting(true);
+    setProgress(0);
+
+    // Simulate progress (this can be replaced with real data export logic)
+    let progressInterval = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(progressInterval);
+          setIsExporting(false);
+          exportToExcel();
+        }
+        return prev + 10;
+      });
+    }, 500);
+  };
+
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(rows); // Convert the rows into a worksheet
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Members');
+
+    // Save the workbook as a file
+    const excelFile = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+    saveAs(new Blob([excelFile]), 'members_data.xlsx');
   };
 
   return (
@@ -195,18 +295,47 @@ export default function Home() {
               {/* filters */}
               <div className="flex gap-4 items-center">
                 <div className="flex gap-2 items-center">
-                  <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md">
+                  {/* <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md">
                     <ArrowUpDown className=" w-4 h-4" />
-                  </div>
-                  <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md">
-                    <Download className="w-4 h-4" />
+                  </div> */}
+                  <div className="p-2 bg-cardBg text-text cursor-pointer rounded-md relative">
+                    <Download className="w-4 h-4" onClick={handleExport} />
+                    {isExporting ? (
+                      <div className="w-[200px] border-2 border-text bg-popupBg text-text flex gap-2 items-start absolute z-10 top-[8rem] p-2 rounded-md right-2">
+                        <div className="w-1/5">
+                          <FileInput className="w-8 h-8 text-text" />
+                        </div>
+                        <div className="w-4/5">
+                          <div className="flex items-center justify-between">
+                            <h1 className="text-title text-sm font-semibold">
+                              Export CSV ...
+                            </h1>
+                            <span
+                              className="text-text font-semibold cursor-pointer"
+                              onClick={() => setIsExporting(false)}
+                            >
+                              x
+                            </span>
+                          </div>
+                          {/* add the progress bar here */}
+                          <div className="mt-2 bg-gray-200 rounded-full h-2 overflow-hidden">
+                            <div
+                              className="bg-buttonBg h-2 rounded-full transition-all"
+                              style={{ width: `${progress}%` }}
+                            ></div>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                 </div>
 
                 {/* add new member button */}
                 <div
                   className="flex items-center gap-2 bg-button-bg px-4 py-2 font-medium cursor-pointer text-white rounded-md text-sm"
-                  onClick={()=>setPopupVisible(true)}
+                  onClick={() => setPopupVisible(true)}
                 >
                   <UserPlus className="w-4 h-4" />
                   <span>Add New Members</span>
@@ -214,11 +343,22 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Show progress bar while exporting */}
+            {isExporting && (
+              <div className="mt-4 w-full bg-cardBg rounded-full">
+                <div
+                  className="bg-bg-content0 text-xs font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                  style={{ width: `${progress}%` }}
+                >
+                  {progress}%
+                </div>
+              </div>
+            )}
+
             {/* Table */}
             <div className="overflow-x-auto bg-cardBg rounded-md mt-4 lg:w-[71vw]">
-              <DataTable />
+              <DataTable rows={rows} />
             </div>
-
           </section>
         </div>
       )}

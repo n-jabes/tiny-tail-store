@@ -74,18 +74,13 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows = [
-  { id: 1, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Confirm", joined: "July 24, 2024" },
-  { id: 2, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Pending", joined: "July 24, 2024" },
-  { id: 3, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Rejected", joined: "July 24, 2024" },
-  { id: 4, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Confirm", joined: "July 24, 2024" },
-  { id: 5, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Pending", joined: "July 24, 2024" },
-  { id: 6, name: "John Smith", email: "test@gmail.com", plans: "-", spend: "0.00 USD", role: "Editor", status: "Rejected", joined: "July 24, 2024" },
-];
-
 const paginationModel = { page: 0, pageSize: 5 };
 
-export default function DataTable() {
+interface DataTableProps {
+  rows: Array<{ id: number; name: string; email: string; plans: string; spend: string; role: string; status: string; joined: string }>;
+}
+
+export default function DataTable({ rows }: DataTableProps) {
   return (
     <div className="bg-cardBg rounded-lg shadow-md w-full overflow-x-auto text-text">
       <DataGrid
@@ -98,18 +93,18 @@ export default function DataTable() {
           color: "inherit",
           border: 0,
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: "rgba(189, 195, 255, 0.15) !important", // Matches semi-transparent cardBg
-            fontWeight: "600 !important", // Ensures semibold text
-            color: "black", // Ensures correct text color
+            backgroundColor: "rgba(189, 195, 255, 0.15) !important", 
+            fontWeight: "600 !important",
+            color: "black",
           },
           "& .MuiTablePagination-root": {
             color: "inherit !important",
           },
           "& .MuiCheckbox-root": {
-            color: "var(--title) !important", // Unchecked checkbox border color
+            color: "var(--title) !important", 
           },
           "& .Mui-checked": {
-            color: "var(--title) !important", // Checked checkbox border color
+            color: "var(--title) !important", 
           },
         }}
       />
