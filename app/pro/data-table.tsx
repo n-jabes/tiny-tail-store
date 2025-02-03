@@ -30,7 +30,7 @@ const columns: GridColDef[] = [
     field: "role",
     headerName: "WordPress Role",
     width: 150,
-    renderCell: (params: GridRenderCellParams<any, string>) => (
+    renderCell: (params: GridRenderCellParams<{ role: string }>) => (
       <span className={roleColors[params.value as keyof typeof roleColors] || "text-gray-600 bg-gray-100 px-2 py-1 rounded-md"}>
         {params.value}
       </span>
@@ -40,12 +40,12 @@ const columns: GridColDef[] = [
     field: "status",
     headerName: "E-Mail Status",
     width: 150,
-    renderCell: (params: GridRenderCellParams<any, string>) => (
+    renderCell: (params: GridRenderCellParams<{ status: string }>) => (
       <span className={statusColors[params.value as keyof typeof statusColors] || "text-gray-600 bg-gray-100 px-2 py-1 rounded-md"}>
         {params.value}
       </span>
     ),
-  },
+  },  
   { field: "joined", headerName: "Member Since", width: 150 },
   {
     field: "details",
@@ -69,7 +69,7 @@ const columns: GridColDef[] = [
             <Mail size={16} className="mr-2" /> Direct Email
           </DropdownMenuItem>
         </DropdownMenuContent>
-        
+
       </DropdownMenu>
     ),
   },

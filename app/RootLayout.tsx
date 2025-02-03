@@ -1,6 +1,5 @@
 'use client';
 
-import localFont from 'next/font/local';
 import './globals.css';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
