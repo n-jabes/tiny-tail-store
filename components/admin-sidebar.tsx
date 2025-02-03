@@ -9,9 +9,6 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@/components/ui/sidebar';
-import { SideBarMenu } from './sidebar-menu';
-import { SideBarHelpCenter } from './sidebar-helpCenter';
-import { SidebarMemberServices } from './sidebar-memberServices';
 import { Logout } from './logout-btn';
 import { useTheme } from 'next-themes';
 
@@ -21,20 +18,17 @@ import {
   Users,
   User,
   CreditCard,
-  FileText,
   ClipboardList,
-  LogIn,
-  ShoppingCart,
   Gift,
   Lock,
-  History,
-  Bell,
   Puzzle,
   Settings,
-  Search,
   SunMedium,
   Moon,
-  MoveLeft,Mail, Wallet, ShieldHalf,
+  MoveLeft,
+  Mail,
+  Wallet,
+  ShieldHalf,
 } from 'lucide-react';
 import { AdminSidebarMenu } from './admin-sidebar-menu';
 import Link from 'next/link';

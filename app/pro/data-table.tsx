@@ -51,7 +51,7 @@ const columns: GridColDef[] = [
     field: "details",
     headerName: "Details",
     width: 100,
-    renderCell: (params: GridRenderCellParams<any>) => (
+    renderCell: () => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="p-2 hover:bg-gray-200 rounded">

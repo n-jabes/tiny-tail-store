@@ -139,7 +139,7 @@ export default function Home() {
     setProgress(0);
 
     // Simulate progress (this can be replaced with real data export logic)
-    let progressInterval = setInterval(() => {
+    const progressInterval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(progressInterval);
