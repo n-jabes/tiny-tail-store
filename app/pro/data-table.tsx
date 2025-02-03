@@ -69,6 +69,7 @@ const columns: GridColDef[] = [
             <Mail size={16} className="mr-2" /> Direct Email
           </DropdownMenuItem>
         </DropdownMenuContent>
+        
       </DropdownMenu>
     ),
   },
