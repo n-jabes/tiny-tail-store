@@ -131,7 +131,7 @@ export function AdminSidebar({
       <SidebarHeader>
         <h1 className="font-semibold text-lg">ADMIN</h1>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="h-max">
         {/* Changing themes */}
         <div
           className="w-[90%] m-auto flex items-center justify-between p-[0.2rem] bg-input
