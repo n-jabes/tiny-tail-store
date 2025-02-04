@@ -118,7 +118,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         {/* Changing themes */}
         <div
-          className="w-[90%] m-auto flex items-center justify-between p-[0.2rem] bg-input
+          className="w-[90%] mx-auto flex items-center justify-between p-[0.2rem] bg-input
   text-text rounded-full"
         >
           <button
