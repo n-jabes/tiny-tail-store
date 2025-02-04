@@ -139,7 +139,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           </button>
         </div>
         {/* search input */}
-        <div className="py-1 px-4 rounded-full  w-[90%] m-auto bg-input flex items-center gap-[1rem] text-text">
+        <div className="py-1 px-4 rounded-full  w-[90%] mx-auto bg-input flex items-center gap-[1rem] text-text">
           <Search className="w-4 h-4" />
           <input
             type="text"
