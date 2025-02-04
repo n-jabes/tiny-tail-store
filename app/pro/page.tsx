@@ -162,11 +162,11 @@ export default function Home() {
   };
 
   return (
-    <div className="px-6 p-b-6 pt-1 mx-auto mb-4 rounded-lg shadow-sm h-max min-h-[89.5vh] w-full">
+    <div className="px-2 md:px-4 lg:px-6 p-b-6 pt-1 mx-auto mb-4 rounded-lg shadow-sm h-max min-h-[89.5vh] w-full">
       {/* popup to add a member */}
       {popupVisible && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-md">
-          <div className="w-full max-w-md bg-popupBg rounded-2xl shadow-xl p-6 sm:p-8 relative">
+          <div className="w-[95%] md:w-full max-w-md bg-popupBg rounded-2xl shadow-xl p-6 sm:p-8 relative">
             {/* Close Icon */}
             <button
               className="absolute top-4 right-4 text-gray-500 hover:text-gray-700"
@@ -259,7 +259,7 @@ export default function Home() {
       )}
 
       {/* navbar */}
-      <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4 flex-wrap gap-2">
         {navbarItems.map((item) => (
           <div
             key={item.id}
@@ -281,10 +281,10 @@ export default function Home() {
           <h1 className="text-title font-semibold text-lg mb-1">
             Manage Members
           </h1>
-          <section className="rounded-lg bg-contentBg p-6 shadow">
-            <div className="flex items-center justify-between">
+          <section className="rounded-lg bg-contentBg p-2 md:p-4 lg:p-6 shadow">
+            <div className="flex items-center justify-between flex-wrap">
               {/* search input */}
-              <div className="relative max-w-md">
+              <div className="relative max-w-md md:w-full mb-1 lg:mb-0">
                 <input
                   type="text"
                   placeholder="Search members"
@@ -302,7 +302,7 @@ export default function Home() {
                       onClick={() => setFilterVisible(!filterVisible)}
                     />
                     {filterVisible && (
-                      <div className="w-[400px] bg-popupBg text-text flex flex-col absolute z-10 top-[4rem] px-4 py-2 rounded-md right-[-8rem] shadow-lg">
+                      <div className="w-[300px] lg:w-[400px] bg-popupBg text-text flex flex-wrap flex-col absolute z-10 top-[4rem] px-4 py-2 rounded-md left-[0rem] lg:right-[-8rem] shadow-lg">
                         <div className="flex items-start justify-between">
                           <h2 className="text-sm text-title font-semibold mb-2">
                             Filters
@@ -315,7 +315,7 @@ export default function Home() {
                           </span>
                         </div>
                         {/* Dropdowns */}
-                        <div className="flex gap-2 mb-2 items-start justify-between">
+                        <div className="flex flex-wrap gap-2 mb-2 items-start justify-between">
                           <select className="w-3/10 p-2 text-sm bg-inputBg rounded-md">
                             <option>Member Role</option>
                             <option>Admin</option>

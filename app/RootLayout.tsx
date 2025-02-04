@@ -35,8 +35,8 @@ export default function RootLayout({
       <SidebarProvider>
         {currentPath === '/pro' ? <AdminSidebar /> : <AppSidebar />}
 
-        <main className="flex flex-1 flex-col gap-2 p-4 pt-0 w-full h-full bg-mainBg">
-          <div className="flex gap-3 items-center ">
+        <main className="flex flex-1 flex-col gap-2 p-4 pt-0 lg:pt-2 w-full h-full bg-mainBg overflow-x-hidden">
+          <div className="flex gap-3 items-center lg:hidden">
             <SidebarTrigger />
           </div>
           {children}
