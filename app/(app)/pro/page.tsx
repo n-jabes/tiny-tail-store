@@ -302,7 +302,7 @@ export default function Home() {
                       onClick={() => setFilterVisible(!filterVisible)}
                     />
                     {filterVisible && (
-                      <div className="w-[300px] lg:w-[400px] bg-popupBg text-text flex flex-wrap flex-col absolute z-10 top-[4rem] px-4 py-2 rounded-md left-[0rem] lg:right-[-8rem] shadow-lg">
+                      <div className="w-[300px] lg:w-[400px] bg-popupBg text-text flex flex-wrap flex-col absolute z-10 top-[4rem] px-4 py-2 rounded-md left-[0rem] lg:left-[-12rem] shadow-lg">
                         <div className="flex items-start justify-between">
                           <h2 className="text-sm text-title font-semibold mb-2">
                             Filters
